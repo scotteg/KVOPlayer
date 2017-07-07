@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var editBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var firstNameLabel: UILabel!
     @IBOutlet weak var lastNameLabel: UILabel!
     
@@ -22,14 +23,12 @@ class ViewController: UIViewController {
         bind()
         observe()
     }
-    
+        
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let controller = (segue.destination as? UINavigationController)?.topViewController as? DetailViewController else { return }
         controller.person = person
     }
-    
-    @IBAction func unwind(for unwindSegue: UIStoryboardSegue) { }
-    
+        
     func bind() {
         firstNameLabel.text = person.firstName
         lastNameLabel.text = person.lastName
